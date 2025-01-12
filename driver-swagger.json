@@ -1,0 +1,357 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0",
+    "title": "Godide"
+  },
+  "host": "petstore.swagger.io",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Encrypter",
+      "description": "Encrypter"
+    }
+  ],
+  "schemes": ["http", "https"],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "description": "Authentication token (JWT) required to access protected endpoints."
+      }
+    },
+    "parameters": {
+      "Accept-Language": {
+        "name": "Accept-Language",
+        "in": "header",
+        "description": "Language preferences for the response",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/api/decrypter": {
+      "post": {
+        "summary": "Decrypter",
+        "tags": ["Encrypter"],
+        "requestBody": {
+          "description": "Decrypter",
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "reqData": {
+                    "type": "string",
+                    "default": "U2FsdGVkX1/7Uu5V+y2w/lPAdF80w/xUzsdJHn9AvcOYI1RGD29piOgvgiN5hjT62fo+AEacExzni0+Fh5XCN1+PO+Pbl6BoLntx6fPLPIc="
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "help support api run successfully"
+          }
+        }
+      }
+    },
+    "/api/send-otp": {
+      "post": {
+        "summary": "Send Otp",
+        "tags": ["Auth"],
+        "requestBody": {
+          "description": "Enter user mobile number",
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "reqData": {
+                    "type": "string",
+                    "default": "U2FsdGVkX1/7Uu5V+y2w/lPAdF80w/xUzsdJHn9AvcOYI1RGD29piOgvgiN5hjT62fo+AEacExzni0+Fh5XCN1+PO+Pbl6BoLntx6fPLPIc="
+                  }
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "mobile_number": {
+                    "type": "string",
+                    "default": "+917007979552"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Login successful"
+          }
+        }
+      }
+    },
+    "/api/verify-otp": {
+      "post": {
+        "summary": "Verify Otp",
+        "tags": ["Auth"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "reqData": {
+                    "type": "string",
+                    "default": "U2FsdGVkX1/7Uu5V+y2w/lPAdF80w/xUzsdJHn9AvcOYI1RGD29piOgvgiN5hjT62fo+AEacExzni0+Fh5XCN1+PO+Pbl6BoLntx6fPLPIc="
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Login successful"
+          }
+        }
+      }
+    },
+    "/api/sign-up": {
+      "post": {
+        "summary": "Sing up",
+        "tags": ["Auth"],
+        "requestBody": {
+          "description": "Auth",
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "reqData": {
+                    "type": "string",
+                    "default": "U2FsdGVkX1+1lrGrONy0xGAQUDLxg9lwCiwWlXHc9LNGEM/8MRawygN9Q5g2G+H9RDgakPDiCWLylkNfdfEviJrFwt94A6nPCeGDzI1WqJ6fgIPIDwTw3yRXxgZzwjrh0cIzzUomP9vg49fx7Ts27pfMs8Eq/qNBTY1aEIhx0S48FCrdQ4FZhdrbIX1oXIMsIyNfTvzVWFQos1p4AIlL4lJH/6ygAQ73iZ1cJ5N6e/JRM5AOSQDbo1msNJZiNOLZ4MyteVfpXwU1OsScVRGiwnliBzgjAbtG6j41jV8h4X2F99YbAL6PSnwtM+5WgiNxe7AXoc0xJGQvy/XqqbzxQDzW21CaJ5F5GhputnwV3HMwnt85zFcjBHUKdUb+RvLrg2b279dAASBm2fJ2+o7zrA=="
+                  },
+                  "userImage": {
+                    "type": "file"
+                  },
+                  "govtIdImage": {
+                    "type": "file"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "help support api run successfully"
+          }
+        }
+      }
+    },
+    "/api/driver/save-vehicle-info": {
+      "post": {
+        "summary": "Save vehicle info",
+        "tags": ["Auth"],
+        "requestBody": {
+          "description": "Auth",
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "reqData": {
+                    "type": "string",
+                    "default": "U2FsdGVkX1+1lrGrONy0xGAQUDLxg9lwCiwWlXHc9LNGEM/8MRawygN9Q5g2G+H9RDgakPDiCWLylkNfdfEviJrFwt94A6nPCeGDzI1WqJ6fgIPIDwTw3yRXxgZzwjrh0cIzzUomP9vg49fx7Ts27pfMs8Eq/qNBTY1aEIhx0S48FCrdQ4FZhdrbIX1oXIMsIyNfTvzVWFQos1p4AIlL4lJH/6ygAQ73iZ1cJ5N6e/JRM5AOSQDbo1msNJZiNOLZ4MyteVfpXwU1OsScVRGiwnliBzgjAbtG6j41jV8h4X2F99YbAL6PSnwtM+5WgiNxe7AXoc0xJGQvy/XqqbzxQDzW21CaJ5F5GhputnwV3HMwnt85zFcjBHUKdUb+RvLrg2b279dAASBm2fJ2+o7zrA=="
+                  },
+                  "vehicleInsurance": {
+                    "type": "file"
+                  },
+                  "drivingLicence": {
+                    "type": "file"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "help support api run successfully"
+          }
+        }
+      }
+    },
+    "/api/driver/save-bank-info": {
+      "post": {
+        "summary": "Save bank account detail",
+        "tags": ["Auth"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "reqData": {
+                    "type": "string",
+                    "default": "U2FsdGVkX1+B4vItaShItKj3wQp3R6X3S3K+qyWmkMHG/mdcrI57rvgKRw/PwRPkJiZQZWEAOSK5bcoCZ5Wju9ovfG6TLr22R5Ng5m1/G5zjNYp4AvXYhl/yT7DVDrl37Xc1GiTNkWTgXPogYJBIUK7JqBYJAMj0jtSn1wYZPkctUIGwjYFPooZYM1Pgr11UbNEWsKyzAb8iJaoB0zsfDHHI8QQsRGkFjJysWYezq0C2I0wfNKNwY9y2KIfkEvu3UxbBIrFUcap09iiwpsVfizOrWyy6Bk2uXT80RMKseCpvs4tHa/DTphy9Na/GAN0vIlvqopB2tqL3IXwKne5CFp1YMtCndKeWxJMahs4lUlIObRH/TxXmuRDr5Q1P780dRbF4c8YIs2CE2++E7Y77rw=="
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Login successful"
+          }
+        }
+      }
+    },
+    "/api/driver/vehicle-list": {
+      "get": {
+        "summary": "Vehicle list",
+        "tags": ["Auth"],
+
+        "responses": {
+          "200": {
+            "description": "Vehicle list fetched successfully"
+          }
+        }
+      }
+    },
+    "/api/driver/vehicle-type": {
+      "get": {
+        "summary": "Vehicle Type list",
+        "tags": ["Auth"],
+
+        "responses": {
+          "200": {
+            "description": "Vehicle Type list fetched successfully"
+          }
+        }
+      }
+    },
+    "/api/driver/services": {
+      "get": {
+        "summary": "services list",
+        "tags": ["Auth"],
+
+        "responses": {
+          "200": {
+            "description": "services list fetched successfully"
+          }
+        }
+      }
+    },
+    "/api/driver/banner-pricing-list": {
+      "get": {
+        "summary": "Banner price list",
+        "tags": ["Banner"],
+
+        "responses": {
+          "200": {
+            "description": "Banner price list fetched successfully"
+          }
+        }
+      }
+    },
+    "/api/driver/banner-request": {
+      "post": {
+        "summary": "Banner Request",
+        "tags": ["Banner"],
+        "requestBody": {
+          "description": "Auth",
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "reqData": {
+                    "type": "string",
+                    "default": "U2FsdGVkX199H4DMAleBcRqjv17ZoRh3ZT1HLhqQBGYtEfjrX9fsZRVs1wkiG4QpB000MjdXNLJLJhNmIKdH1EYzqDIZYQvSElCc1H2cTZt60S7T5W9nw8dq67gyo+kA9AzjlrNochMtJmtqh46ol6VUr8RiRLN5JzLVnZ1AsfZ/0DlSmn0n6zPkIVl/4qu4R1bSKJAobeoCXJ83T3+YSD7L3/mTse7MTWBElcWfQjmbSja255bg61cdXsyofgGawVtkeEmqhFivvJJPJv9fAVOYlDC5MHj7Fk8Y9Xoty6FBVHmMxySxEbdz3ArcacDPnIurBBVwPE7cTP5TMLDDDSjdY3OHhBp59KglAtVk+MY="
+                  },
+                  "bannerImage": {
+                    "type": "file"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Banner request send successfully"
+          }
+        }
+      }
+    }
+  },
+
+  "securityDefinitions": {
+    "Authorization": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header",
+      "description": "  Enter the token like `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYmQxODM1NzQ0MGZmYjUzMWM5NDE0NCIsImZpcnN0TmFtZSI6Ik1vaGQiLCJtb2JpbGUiOiI5NjkwNzE2MzA5IiwiZGV2aWNlVG9rZW4iOiIxMjM0NTY3OCIsIm5vdGlmaWNhdGlvblN0YXR1cyI6dHJ1ZSwiaWF0IjoxNjczODkxNTk4LCJleHAiOjE3MDU0Mjc1OTh9.uN4d3gbKmDkeBv0fjE94i2Ffwcfwe7ty1ySEnuFrh28` "
+    },
+    "reelestate_user_name": {
+      "type": "apiKey",
+      "name": "reelestate_user_name",
+      "in": "header"
+    },
+    "reelestate_password": {
+      "type": "apiKey",
+      "name": "reelestate_password",
+      "in": "header"
+    },
+    "petstore_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://petstore.swagger.io/oauth/authorize",
+      "flow": "implicit",
+      "scopes": {
+        "read:pets": "read your pets",
+        "write:pets": "modify pets in your account"
+      }
+    }
+  },
+  "definitions": {
+    "ApiResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "type": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
