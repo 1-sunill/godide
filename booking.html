@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.js"></script>
+
+    <script>
+      var socket = io(
+        "https://thegodide.com:6163?userId=67581fa0d4c16977608f859b&userType=driver&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzUyZTE3MDRjNjhhZjYzMDA4NzRjMWIiLCJzdGF0dXMiOjEsImlhdCI6MTczMzkyNDE4MiwiZXhwIjoxNzM0NTI4OTgyfQ.KCrh6BHnh73ybQT0obuVG4xHxrRVg0KKA0NXgAwvt7Y",
+        {
+          auth: {
+            token:
+              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzUyZTE3MDRjNjhhZjYzMDA4NzRjMWIiLCJzdGF0dXMiOjEsImlhdCI6MTczMzkyNDE4MiwiZXhwIjoxNzM0NTI4OTgyfQ.KCrh6BHnh73ybQT0obuVG4xHxrRVg0KKA0NXgAwvt7Y",
+          },
+          transport: ["websocket"],
+        }
+      );
+
+      // user to provider
+      // let chatData = {
+      //    senderId: '660518076cbf0d5d038f9a11',
+      // };
+
+
+      //Unauthrized check
+      socket.on("authentication_error", (data) => {
+        console.log("authentication_error ", data);
+      });
+
+      //Comming rides list
+      socket.on("rideRequestList", (data) => {
+        console.log("rideRequestList ", data);
+      });
+
+      socket.on("server_error", (data) => {
+        console.log("server_error ", data);
+      });
+
+      socket.on("successPayment", (data) => {
+        console.log("successPayment ", data);
+      });
+
+     
+    // socket.emit("agoraToken", {
+    //     roomId: 1733491265081,
+    //     senderId: "6673d1534bf2c8dd12607ab1",
+    //     messageType: 4,
+    //     receiverId: "675301e8d54a0c4d22dfd3a7",
+    //   });
+
+      socket.on("agoraToken", (data) => {
+        console.log(data, "data");
+      });
+      socket.on("invalidData", (data) => {
+        console.log("invalidData ", data);
+     });
+      //update ride status
+      // let updateAcceptedRideStatus = {
+      //         status:6,
+      //          driverId: '6752e1704c68af6300874c1b',
+      //         bookingId: '6752e7f74c68af6300875596',
+      //         userId: '6752cfd24c68af63008740ff',
+      //     };
+      // socket.emit('updateAcceptedRideStatus', updateAcceptedRideStatus);
+      // socket.on('rideRequestList', (data) => {
+      //    console.log("data ",data);
+      // })
+
+      //VerifyOtp of booking
+      //           let verifyBookingOtp = {
+      //   driverId: '6683f94e1b4e8391c79e3cd2',
+      //               bookingId: '668e3c2336a66431afd7f506',
+      //               userId: '668d0776102824fd33c328a7',
+      //   otp: 9216
+      // }
+
+      //       socket.emit('verifyBookingOtpCarpool', verifyBookingOtp);
+      socket.on("verifyBookingOtpStatusArray", (data) => {
+        console.log("data After otp verify", data);
+      });
+      socket.on("rideRequestListCarpool", (data) => {
+        console.log("data ", data);
+      });
+      socket.on("getAcceptedRideStatusArray", (data) => {
+        console.log("data+++++++++ ", data);
+      });
+      socket.on("getAcceptedRideStatus", (data) => {
+        console.log("getAcceptedRideStatus", data);
+      });
+      socket.on("error", (data) => {
+        console.log("data ", data);
+      });
+      socket.on("rideStatus", (data) => {
+        console.log("datarideStatus ", data);
+      });
+      socket.on("successPayment", (data) => {
+        console.log("successPayment ", data);
+      });
+      //        let verifyBookingOtp = {
+      //   driverId: '664758ed1f139ffc541dfc86',
+      //               bookingId: '664b27d81b9891bb0834c894',
+      //               userId: '660a802e6b767ddd05c6f8dd',
+      //   otp: 9512
+      // }
+
+      //       socket.emit('verifyBookingOtpCarpool', verifyBookingOtp);
+      //       socket.on('verifyBookingOtpStatus', (data) => {
+      //          console.log("data ",data);
+      //       })
+      //        socket.on('error', (data) => {
+      //          console.log("data ",data);
+      //       })
+
+      //Cancel Ride
+      //   let cancelRide = {
+      //       status:6,
+      //      driverId: '665d5a079e2045d8c1c0956d',
+      //         bookingId: '665d75898cc758feed5faffd',
+      //         userId: '665d58ed9e2045d8c1c09508',
+      //      reason:"Test"
+      //     };
+      // socket.emit('cancelRide', cancelRide);
+      // socket.on('cancelBooking', (data) => {
+      //    console.log("data ",data);
+      // })
+
+      //Accept a ride
+      // let acceptRejectRide = {
+      //       status:'accept',
+      //        driverId: '667e6345368739d0dc335478',
+      //         bookingId: "6682ae391b4e8391c79d3f2d",
+      //         userId: '667e60e8395d97fb20b7db8f',
+      //     };
+      // socket.emit('acceptRejectRide', acceptRejectRide);
+      // socket.on('getRoomId', (data) => {
+      //    console.log("data ",data);
+      // })
+
+       // socket.emit('bookRide', {
+       //        s_lat:28.629915,
+       //        s_lng:77.372482,
+       //        d_lat:28.63582616158038,
+       //        d_long:77.37048686708111,
+       //        vehicleId:"65faedda66e9b4299260b345",
+       //        source:"RipenApps A-199 sector 63",
+       //        bookingType:1,
+       //        destination:"Guar city,greater noida",
+       //        serviceType:"normal",
+       //        scheduleTime:"06:02:00",
+       //        bookingDate:"2024-11-25"
+
+       //  })
+
+       //  socket.on('receiveBookingStatus',(data)=>{
+       //     console.log(data,'receiveBookingStatus');
+       //  })
+      //   socket.on('lastSeen',(data)=>{
+      //      console.log(data,'last seen');
+      //   })
+
+      // let data = {
+      //    userId: '67487edc58ab68a837957552',
+      //    roomId:'1733223676871',
+      //    // userType:'admin'
+      // };
+      // socket.emit('chatList', data);
+      socket.on('chatUserList', (data) => {
+         console.log(data);
+      })
+
+       socket.on('receiveMessages', (data) => {
+         console.log(data);
+      })
+
+      // nevigation chat list
+      // let data1 ={
+      //  userId : "65f979c7e81be33e6a29a827",
+      //  requestType:"user"
+      // }
+      //  socket.emit('navigationChatList', data1);
+      //  socket.on('getNavigationChatList', (data) => {
+      //     console.log("data ",data);
+      //  })
+
+      // socket.emit('getUnreadMessageCount', { authUserId: '65a4cec8a6c45869ee97f598' });
+
+      // // Client-side code to listen for the response
+      // socket.on('unreadMessageCount', (data) => {
+      //    console.log("done")
+      //    console.log("unreadMessageCount",data)
+      // });
+
+      // socket.emit('cancelMessage', { roomId: '1703078499691', messageId: '6582eb135ef6aa23943732b0',authUserId:'65252b02ea8c88e9847df328' });
+
+      // socket.on('messageCancelled', (data) => {
+      //   const { messageId, status } = data;
+      //   console.log(data)
+      // });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body>
+
+   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.js"></script>
+
+
+   <script>
+      var socket = io('http://13.235.137.221:6002', {
+         transport: ['websocket']
+      });
+
+      // user to provider
+      // let chatData = {
+      //    senderId: '6579f0ff59c41aa5bf790eb1', //mukesh
+      //    receiverId: '657d9bc7c5216d0d51413f87', //test
+      // };
+
+     //provider to user
+      //  let chatData = {
+      //      userId: '6660669c92e4660a2100cacd',
+      //      receiverId: '65cbedee19ae0d44843c7ae6',
+      //       senderType:"user",
+      //       receiverType:"driver"
+
+
+      //  };
+      // socket.emit('initiateChat', chatData);
+      // socket.on('getRoomId', (data) => {
+      //    console.log("data ",data);
+      // })
+
+     // let authUserId = "65118feec68694eff42c5957"
+     //  socket.emit('updateChatList', authUserId);
+     //  socket.on('chatUserList', (data) => {
+     //     console.log("data ",data);
+     //  })
+
+   
+       socket.emit('chatMessage', {
+         roomId: 1718203973836.0,
+         userId:"65cbedee19ae0d44843c7ae6",
+         senderType:"admin", // driver | user
+      });
+
+      //  socket.on('receiveMessages', (data) => {
+      //    console.log("receiveMessages ",data);
+      // })
+        
+
+   //  socket.emit('sendMessage', {
+   //        roomId: 1714563676505.0,
+   //        senderType:"user",
+   //         userId: '660a802e6b767ddd05c6f8dd',
+   //         receiverId: '65f97c092a4c240ded5ac6fb',
+   //         message:"Helo Order support",
+   //         messageType:1
+        
+   //    })
+    
+      socket.on('receiveMessage',(data)=>{
+         console.log(data,'receive message11');
+      })
+   //    socket.on('lastSeen',(data)=>{
+   //       console.log(data,'last seen');
+   //    })
+      
+      // let data = {
+      //    userId: '65cbedee19ae0d44843c7ae6',
+      //    ticketId:'2415362',
+      //    receiverType:'user'
+      // };
+      // socket.emit('chatList', data);
+      // socket.on('chatUserList', (data) => {
+      //    console.log(data);
+      // })
+
+
+    // nevigation chat list
+     // let data1 ={
+     //  userId : "65f979c7e81be33e6a29a827",
+     //  requestType:"user"
+     // }
+     //  socket.emit('navigationChatList', data1);
+     //  socket.on('getNavigationChatList', (data) => {
+     //     console.log("data ",data);
+     //  })
+
+// socket.emit('getUnreadMessageCount', { authUserId: '65a4cec8a6c45869ee97f598' });
+
+// // Client-side code to listen for the response
+// socket.on('unreadMessageCount', (data) => {
+//    console.log("done")
+//    console.log("unreadMessageCount",data)
+// });
+
+
+// socket.emit('cancelMessage', { roomId: '1703078499691', messageId: '6582eb135ef6aa23943732b0',authUserId:'65252b02ea8c88e9847df328' });
+
+// socket.on('messageCancelled', (data) => {
+//   const { messageId, status } = data;
+//   console.log(data)
+// });
+
+
+   
+   </script>
+</body>
+
+</html>

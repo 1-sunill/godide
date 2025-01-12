@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <!-- 28.627673392836883, 77.3646839519781 -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.js"></script>
+
+    <script>
+      var socket = io(
+        "https://thegodide.com:6163?userId=6752d72c4c68af6300874500&userType=user&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzUyZDcyYzRjNjhhZjYzMDA4NzQ1MDAiLCJzdGF0dXMiOjEsImlhdCI6MTczMzkwOTk1NCwiZXhwIjoxNzM0NTE0NzU0fQ.7ml2v3PPtb6tPAbfwIZdY3g7tH-q2nVRPH_vhhWLkpw",
+        {
+          transport: ["websocket"],
+          auth: {
+            token:
+              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzUyZDcyYzRjNjhhZjYzMDA4NzQ1MDAiLCJzdGF0dXMiOjEsImlhdCI6MTczMzkwOTk1NCwiZXhwIjoxNzM0NTE0NzU0fQ.7ml2v3PPtb6tPAbfwIZdY3g7tH-q2nVRPH_vhhWLkpw",
+          },
+        }
+      );
+      // socket.emit("acceptedCall", {
+      //   roomId: 1723358957264,
+      //   chatMessageId: "66b86340c0008b20eb2391a2",
+      //   messageType: "audioCall",
+      // });
+
+      // socket.on("acceptedCall", (data) => {
+      //   console.log("acceptedCall ", data);
+      // });
+
+      // socket.emit("agoraToken", {
+      //   roomId: 1733491265081,
+      //   senderId: "675301e8d54a0c4d22dfd3a7",
+      //   messageType: 4,
+      //   receiverId: "6673d1534bf2c8dd12607ab1",
+      // });
+
+      socket.on("agoraToken", (data) => {
+        console.log(data, "data");
+      });
+      socket.on("invalidData", (data) => {
+        console.log("invalidData ", data);
+    });
+      // user to provider
+      // let chatData = {
+      //    senderId: '6579f0ff59c41aa5bf790eb1',
+      // };
+      //provider to user
+      // let bookRide = {
+      //      s_lat:28.6257358,
+      //       s_lng:77.3786394,
+      //       d_lat:28.575812499999998,
+      //       d_long:77.35735939999999,
+      //       vehicleId: "65faedda66e9b4299260b34d",
+      //       vehicleCatId: "65fa8eaf0b27d6486809731a",
+      //       serviceType: "towing",
+      //       source: "A-199, A Block, Sector 63, Noida, Uttar Pradesh 201301, India",
+      //       bookingType: 1,
+      //       towingVehicle: "",
+      //       patientName: "Sunil",
+      //       age: "23",
+      //       gender: "1",
+      //       reason: "test",
+      //       destination: "A-199, A Block, Sector 63, Noida, Uttar Pradesh 201301, India",
+      //       bookingDate: "2024-06-24T13:25:45",
+      //       // couponCode:"GodideJIFyl"
+      //     };
+      // socket.emit('bookRide', bookRide);
+      // socket.on('getRoomId', (data) => {
+      //    console.log("data "  ,data);
+      // })
+      // socket.on('driverDetailsss', (data) => {
+      //            console.log("data ",data);
+      //         })
+      socket.on("rideStatus", (data) => {
+        console.log("data ", data);
+      });
+      //  let makePay = {
+      //       bookingId: '668f6bfea07c63e41bc37d12',
+      //       amount:19
+      //     };
+      // socket.emit('makePayment', makePay);
+      //  socket.on('successPayment', (data) => {
+      //    console.log("successPayment ", data);
+      // })
+      //Book rental
+
+      //  let bookRental = {
+      //    s_lat:28.607033999999999,
+      //      s_lng:77.372855409310318,
+      //       d_lat:28.627981000000002,
+      //      d_long:77.364856700000004,
+      //      vehicleId:"65faedda66e9b4299260b343",
+      //      vehicleCatId:"65fa8eaf0b27d6486809731a",
+      //      bookingDate:"2024-07-22T12:16:07.000Z",
+      //      hours:10,
+      //      serviceType:"rentals"
+      //  };
+      // socket.emit('bookRental', bookRental);
+
+       // let bookTravel = {
+       //   s_lat:28.629915,
+       //     s_lng:77.372482,
+       //     d_lat:28.63582616158038,
+       //     d_long:77.37048686708111,
+       //     vehicleId:"65faedda66e9b4299260b343",
+       //     vehicleCatId:"65fa8eae0b27d64868097312",
+       //     bookingDate:"2024-05-08T12:16:07.000Z",
+       //     source:"RipenApps A-199 sector 63",
+       //      bookingType:2,
+       //      destination:"Guar city,greater noida",
+       //      serviceType:"travel",
+       // };
+      // socket.emit('bookTravel', bookTravel);
+
+      //        let shuttleBooking = {
+      //          s_lat:28.627981000000002,
+      //         s_lng:77.364856700000004,
+      //         d_lat:28.607562699999999,
+      //         d_long:77.368331900000001,
+      //              source:"RipenApps A-199 sector 63",
+      //               destination:"Guar city,greater noida",
+      //               bookingType:2,
+      //              vehicleId:"65faedda66e9b4299260b349",
+      //              bookingDate:"2024-05-22 14:52:05",
+      //               noOfPerson:2,
+      //               serviceType:"shuttle",
+      //               driverId:"6676a13668e53b09cd0153d9",
+      //               serviceId:"664c53fd49a12f6542026a50"
+      //          };
+      //         socket.emit('shuttleBooking', shuttleBooking);
+      // socket.on('driverDetailsss', (data) => {
+      //                  console.log("data11111 ",data);
+      //               })
+
+      // let shuttleBooking = {
+      //   s_lat:28.624561344880156,
+      //    s_lng:77.37817188656987,
+      //    d_lat:28.570763026626096,
+      //    d_long:77.32267681956516,
+      //    serviceType:"carpool",
+      //    noOfPerson:2,
+      //    vehicleId:"65faedda66e9b4299260b343",
+      //    bookingDate:"2024-07-25T12:16:07.000Z",
+      //    vehicleCatId:"65fa8eaf0b27d6486809731a",
+      //  };
+      // socket.emit('shuttleBooking', shuttleBooking);
+
+      // console.log("Hii siri")
+      //  let bookRide = {
+      //       bookingId: '6634a6d1833f05f6c25a09b6',
+      //        userId: '663378a95b7621a834635d2a',
+      //        status: 2,
+      //        driverId: '6630c3f2dd9101d506d56739',
+      //        reason: 'Change in Plan'
+      //     };
+      // socket.emit('cancelRide', bookRide);
+      // socket.on('cancelBooking', (data) => {
+      //    console.log("data "  ,data);
+      // })
+      //  let makePay = {
+      //           bookingId: '66a24a2cc0066962dbd586c7',
+      //           amount:180
+      //         };
+      //     socket.emit('makePayment', makePay);
+      // socket.on('successPayment', (data) => {
+      //        console.log("successPayment ", data);
+      //     })
+      // //Get Driver detail after ride acceptance
+      // socket.on('driverDetails', (data) => {
+      //    console.log("data ",data);
+      // })
+
+      socket.on("getAcceptedRideStatus", (data) => {
+        console.log("data ", data);
+      });
+      // let authUserId = "65118feec68694eff42c5957"
+      //  socket.emit('updateChatList', authUserId);
+       socket.on('chatUserList', (data) => {
+          console.log("data ",data);
+       })
+
+      socket.on("error", (data) => {
+        console.log("data ", data);
+      });
+      // let data = {
+      //    userId:"66766d57b96d5521fb48e7a8",
+      //    status:6,"bookingId":"","driverId":"667e6345368739d0dc335478","reason":"Submit Feedback"
+      // }
+
+      socket.on("validation_error", (data) => {
+        console.log("data ", data);
+      });
+      socket.on("verifyBookingOtpStatus", (data) => {
+        console.log("data ", data);
+      });
+
+      //Cancel before acceptance
+      //   let deletePendingRide = {
+      //      userId:'663378a95b7621a834635d2a'
+      //     };
+      // socket.emit('deletePendingRide', deletePendingRide);
+      // socket.on('rideRequestList', (data) => {
+      //    console.log("data ",data);
+      // })
+
+      //  socket.emit('list', {
+      //    roomId: 1713350102671,
+      //    userId:"6579f0ff59c41aa5bf790eb6",
+      //    ticketId: '2417914',
+      //    senderType:"user", // provider | user
+      // });
+
+      //  socket.on('listData', (data) => {
+      //    console.log("listData ",data);
+      // })
+
+      // socket.emit('bookRide', {
+      //     s_lat: "28.625763494237919",
+      //     s_lng: "77.378492464446879",
+      //     d_lat: "28.625791699999997",
+      //     d_long: "77.37834749999999",
+      //     vehicleId: "65faedda66e9b4299260b343",
+      //     vehicleCatId: "65fa8eae0b27d64868097312",
+      //     serviceType: "reserve",
+      //     source: "H-162, H Block, Sector 62, Noida, Uttar Pradesh 201301, India",
+      //     bookingType: 1,
+      //     towingVehicle: "",
+      //     bookingDate: "2024-11-30 10:07:04 +0000",
+      //     scheduleTime:"2024-12-01 12:06:42",
+      //     destination:
+      //       "Noida Sector-27, Office No.6, 2nd Floor Rampal Awana Complex, Near Sector 18 Metro Station, Opposite Pillar No. 72, Pocket L, Sector 18, Noida, Uttar Pradesh 201301, India",
+
+      //   })
+
+        socket.on('receiveBookingStatus',(data)=>{
+           console.log(data,'receiveBookingStatus');
+        })
+      //   socket.on('lastSeen',(data)=>{
+      //      console.log(data,'last seen');
+      //   })
+
+      // let data = {
+      //    userId: '65f979c7e81be33e6a29a827',
+      //    ticketId:'2411195',
+      //    // userType:'admin'
+      // };
+      // socket.emit('chatList', data);
+      // socket.on('chatUserList', (data) => {
+      //    console.log(data);
+      // })
+
+      // nevigation chat list
+      // let data1 ={
+      //  userId : "65f979c7e81be33e6a29a827",
+      //  requestType:"user"
+      // }
+      //  socket.emit('navigationChatList', data1);
+      //  socket.on('getNavigationChatList', (data) => {
+      //     console.log("data ",data);
+      //  })
+
+      // socket.emit('getUnreadMessageCount', { authUserId: '65a4cec8a6c45869ee97f598' });
+
+      // // Client-side code to listen for the response
+      // socket.on('unreadMessageCount', (data) => {
+      //    console.log("done")
+      //    console.log("unreadMessageCount",data)
+      // });
+
+      // socket.emit('cancelMessage', { roomId: '1703078499691', messageId: '6582eb135ef6aa23943732b0',authUserId:'65252b02ea8c88e9847df328' });
+
+      // socket.on('messageCancelled', (data) => {
+      //   const { messageId, status } = data;
+      //   console.log(data)
+      // });
+    </script>
+  </body>
+</html>
