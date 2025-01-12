@@ -1,0 +1,211 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0",
+    "title": "Godide"
+  },
+  "host": "petstore.swagger.io",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Encrypter",
+      "description": "Encrypter"
+    }
+  ],
+  "schemes": ["http", "https"],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "description": "Authentication token (JWT) required to access protected endpoints."
+      }
+    },
+    "parameters": {
+      "Accept-Language": {
+        "name": "Accept-Language",
+        "in": "header",
+        "description": "Language preferences for the response",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/api/decrypter": {
+      "post": {
+        "summary": "Decrypter",
+        "tags": ["Encrypter"],
+        "requestBody": {
+          "description": "Decrypter",
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "reqData": {
+                    "type": "string",
+                    "default": "U2FsdGVkX1/7Uu5V+y2w/lPAdF80w/xUzsdJHn9AvcOYI1RGD29piOgvgiN5hjT62fo+AEacExzni0+Fh5XCN1+PO+Pbl6BoLntx6fPLPIc="
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "help support api run successfully"
+          }
+        }
+      }
+    },
+    "/api/send-otp": {
+      "post": {
+        "summary": "Send Otp",
+        "tags": ["Auth"],
+        "requestBody": {
+          "description": "Enter user mobile number",
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "reqData": {
+                    "type": "string",
+                    "default": "U2FsdGVkX1/7Uu5V+y2w/lPAdF80w/xUzsdJHn9AvcOYI1RGD29piOgvgiN5hjT62fo+AEacExzni0+Fh5XCN1+PO+Pbl6BoLntx6fPLPIc="
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Login successful"
+          }
+        }
+      }
+    },
+    "/api/verify-otp": {
+      "post": {
+        "summary": "Verify Otp",
+        "tags": ["Auth"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "reqData": {
+                    "type": "string",
+                    "default": "U2FsdGVkX1/7Uu5V+y2w/lPAdF80w/xUzsdJHn9AvcOYI1RGD29piOgvgiN5hjT62fo+AEacExzni0+Fh5XCN1+PO+Pbl6BoLntx6fPLPIc="
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Login successful"
+          }
+        }
+      }
+    },
+    "/api/rider/home": {
+      "get": {
+        "summary": "Home",
+        "tags": ["Auth"],
+
+        "responses": {
+          "200": {
+            "description": "Vehicle list fetched successfully"
+          }
+        }
+      }
+    },
+    "/api/add-address": {
+      "post": {
+        "summary": "Add address",
+        "tags": ["Address"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "reqData": {
+                    "type": "string",
+                    "default": "U2FsdGVkX1/fC01hqZSRrZaufbJfnkx8FpwIX/eImgL+jVyn8DERSS/BC98PFZPLVnpGHTfeP2LdP1tT5bikoeU4n9KQ5V1h7St307/XcvCPYrdTg7H17BCHIlWc+TO6nLbwdh/Iq8NiUx9QSOcGpGLKw7X2TwyGg0cLMm3N1hjSPUrFzIv9x/ShdXwfN7Vga55KhWZlAGxZwRFbKRcjUTFAsgoQFJjHZi9mSHI8wXZRqVEhVxLsmKgerqFLIhElq0082/xNd5hQIFoSxnEBi4zlQj0+c+bX+Qfxi8dm3i4sgW7JH1/76rtp9f4/Bf5pau1Atmk1DTXMf4j1+gDh4K8yjGDgdcNSfciGVyDmOeAxKBVhbexUnV93TXcUPcRH0wuuTq/x88lBdcQs3s32RaT0JDKUQ7wzUd+e7yBwiUU="
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Login successful"
+          }
+        }
+      }
+    }
+  },
+
+  "securityDefinitions": {
+    "Authorization": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header",
+      "description": "  Enter the token like `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYmQxODM1NzQ0MGZmYjUzMWM5NDE0NCIsImZpcnN0TmFtZSI6Ik1vaGQiLCJtb2JpbGUiOiI5NjkwNzE2MzA5IiwiZGV2aWNlVG9rZW4iOiIxMjM0NTY3OCIsIm5vdGlmaWNhdGlvblN0YXR1cyI6dHJ1ZSwiaWF0IjoxNjczODkxNTk4LCJleHAiOjE3MDU0Mjc1OTh9.uN4d3gbKmDkeBv0fjE94i2Ffwcfwe7ty1ySEnuFrh28` "
+    },
+    "reelestate_user_name": {
+      "type": "apiKey",
+      "name": "reelestate_user_name",
+      "in": "header"
+    },
+    "reelestate_password": {
+      "type": "apiKey",
+      "name": "reelestate_password",
+      "in": "header"
+    },
+    "petstore_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://petstore.swagger.io/oauth/authorize",
+      "flow": "implicit",
+      "scopes": {
+        "read:pets": "read your pets",
+        "write:pets": "modify pets in your account"
+      }
+    }
+  },
+  "definitions": {
+    "ApiResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "type": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
